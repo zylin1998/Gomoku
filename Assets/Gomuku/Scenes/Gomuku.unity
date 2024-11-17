@@ -176,7 +176,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1483,6 +1483,10 @@ PrefabInstance:
     - target: {fileID: 1343085660393911784, guid: c51246dbc1c5e724bb949c1804b95f5c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381415370576248067, guid: c51246dbc1c5e724bb949c1804b95f5c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1447270758573394405, guid: c51246dbc1c5e724bb949c1804b95f5c, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2802,6 +2806,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3110552343707126903, guid: c51246dbc1c5e724bb949c1804b95f5c, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110552343707126903, guid: c51246dbc1c5e724bb949c1804b95f5c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3149152050190459365, guid: c51246dbc1c5e724bb949c1804b95f5c, type: 3}
@@ -6163,6 +6171,10 @@ PrefabInstance:
     - target: {fileID: 8318953696226111752, guid: c51246dbc1c5e724bb949c1804b95f5c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319233567930583946, guid: c51246dbc1c5e724bb949c1804b95f5c, type: 3}
+      propertyPath: m_text
+      value: 5:00
       objectReference: {fileID: 0}
     - target: {fileID: 8335588502328901413, guid: c51246dbc1c5e724bb949c1804b95f5c, type: 3}
       propertyPath: m_AnchorMax.y

@@ -39,47 +39,51 @@ namespace Gomuku
             DomainEventService.Register<EndGaming>(EndGaming, GroupId);
         }
 
-        private void Init() 
+        private void Init()
         {
             var options = View
                 .OfType<OptionListener>()
                 .ToDictionary(k => k.Id);
 
-            _Start = options[0];
-            _Quit  = options[1];
-
-            _Start.AddListener((id => 
+            if (options.TryGetValue(0, out _Start))
             {
-                _Records = new int[Declarations.Size.Pow(2)].ToList();
+                _Start.AddListener((id =>
+                {
+                    _Records = new int[Declarations.Size.Pow(2)].ToList();
 
-                View.Stones.ForEach(stone =>
-                { 
-                    stone.Listener.interactable = true;
-
-                    stone.PointerExit();
-                });
-
-                DataUpdater.Update(Declarations.Message, "開始對局，由黑棋先手");
-
-                _Turn = EStoneType.Black;
-
-                SettleEvents(new ResetBoard(), new ResetTimer(), new StartTimer());
-
-                _Gaming = true;
-
-                _Start.Listener.interactable = false;
-            }));
-            _Quit.AddListener((id =>
-            {
-                var send = new SendConfirm("是否離開遊戲",
-                    () => Application.Quit(),
-                    () =>
+                    View.Stones.ForEach(stone =>
                     {
-                        if (_Gaming) SettleEvents(new StartTimer());
+                        stone.Listener.interactable = true;
+
+                        stone.PointerExit();
                     });
 
-                SettleEvents(new StopTimer(), send);
-            }));
+                    DataUpdater.Update(Declarations.Message, "開始對局，由黑棋先手");
+
+                    _Turn = EStoneType.Black;
+
+                    SettleEvents(new ResetBoard(), new ResetTimer(), new StartTimer());
+
+                    _Gaming = true;
+
+                    _Start.Listener.interactable = false;
+                }));
+            }
+
+            if (options.TryGetValue(1, out _Quit))
+            {
+                _Quit.AddListener((id =>
+                {
+                    var send = new SendConfirm("是否離開遊戲",
+                        () => Application.Quit(),
+                        () =>
+                        {
+                            if (_Gaming) SettleEvents(new StartTimer());
+                        });
+
+                    SettleEvents(new StopTimer(), send);
+                }));
+            }
 
             _Stones = View.Stones.ToList();
 
